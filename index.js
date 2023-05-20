@@ -44,6 +44,30 @@ async function run() {
             res.send(result)
         })
 
+        app.put('/categorys/:id', async (req, res) => {
+            const id = req.params.id;
+            const category = req.body;
+            console.log(category)
+            const query = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+
+            const updatedCategory = {
+                $set: {
+                    category: category,
+                },
+            };
+            const result = await categoryCollection.updateOne(query, updatedCategory, options);
+            res.send(result)
+
+        })
+        app.delete('/categorys/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await categoryCollection.deleteOne(query);
+            res.send(result)
+
+        })
+
 
         //mytoys
         app.get('/mytoys', async (req, res) => {
@@ -63,7 +87,7 @@ async function run() {
             res.send(result)
         })
 
-        app.get('/toys/:id', async (req, res) => {
+        app.get('toys/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await toyCollection.findOne(query);
@@ -92,7 +116,6 @@ async function run() {
             const toy = req.body;
             const query = { _id: new ObjectId(id) };
             const options = { upsert: true };
-            console.log(toy)
             const updatedToy = {
                 $set: {
                     toyName: toy.toyName,
