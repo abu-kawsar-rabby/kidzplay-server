@@ -1,7 +1,6 @@
 {
   "name": "kidzplay-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -15,5 +14,15 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^5.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-abu-kawsar-rabby.git"
+  },
+  "bugs": {
+    "url": "https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-abu-kawsar-rabby/issues"
+  },
+  "homepage": "https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-abu-kawsar-rabby#readme",
+  "description": ""
 }
