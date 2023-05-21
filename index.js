@@ -103,6 +103,15 @@ async function run() {
             const result = await toyCollection.find(query).toArray();
             res.send(result);
         });
+        app.get('/search', async (req, res) => {
+            const toyName = req.query.toyName;
+            let query = {};
+            if (toyName) {
+                query = { toyName: toyName };
+            }
+            const result = await toyCollection.find(query).toArray();
+            res.send(result);
+        });
 
         app.post('/toys', async (req, res) => {
             const toy = req.body;
