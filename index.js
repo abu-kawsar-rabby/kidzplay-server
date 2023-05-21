@@ -76,14 +76,21 @@ async function run() {
             if (email) {
                 query = { sellerEmail: email };
             }
-            const result = await toyCollection.find(query).toArray();
+            const type = req.query.type;
+            let result;
+            if (type) {
+                result = await toyCollection.find(query).sort({ price: type }).toArray();
+            }
+            else {
+                result = await toyCollection.find(query).toArray();
+            }
             res.send(result);
         });
 
 
         //toyCollection post api
         app.get('/toys', async (req, res) => {
-            const limit = parseInt(req.query.limit) || 20; 
+            const limit = parseInt(req.query.limit) || 20;
             const result = await toyCollection.find().limit(limit).toArray();
             res.send(result);
         });
